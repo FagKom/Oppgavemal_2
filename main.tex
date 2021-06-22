@@ -1,35 +1,26 @@
-\documentclass[10pt,b5paper,twoside,openright]{report}
-\usepackage{thesis}
+\documentclass[10pt,b5paper,twoside,openright]{report} % Template using the report document class.
+% 10 pt font size for b5 paper, twoside adjusts margins on left/right sides, and openright ensures that new chapters start on a right page.
 
-\author{Firstname Lastname}
-\title{Thesis Title}
-
+\usepackage{thesis} % style file thesis.sty
 
 
-\begin{document}
-	%	\frontmatter
-	%	\include{tex/titlepage.tex}
+\begin{document}	
+	
+	\input{tex/frontmatter/titlepage}% Kommenter ut når print bestilles -- egen forside genereres i NTNU Grafisk senter
 	
 	\pagenumbering{roman}
-	\input{tex/pretext/abstract}
-	\input{tex/pretext/preface}
+	\input{tex/frontmatter/abstract}
+	\input{tex/frontmatter/sammendrag}
+	\input{tex/frontmatter/preface}
 	
-	\setcounter{tocdepth}{2}
-	{\hypersetup{linkcolor=cyan!70!black}\tableofcontents}
+
+	{\hypersetup{linkcolor=cyan!70!black}\tableofcontents} % Table of contents with clickable links.
 	
-	%	\mainmatter
-	\input{tex/pretext/introduction}
-	\input{tex/Introduction_theory/2nd_quant/many_body_quantum_mechanics}
-	\input{tex/Introduction_theory/top_ins/topological_insulators}
-	\input{tex/Introduction_theory/graphene/graphene}
-	\input{tex/Introduction_theory/LLs/bosonization}
-	\input{tex/greens_calulations/phonon_corrections}
-	\input{tex/summary.tex}
+	\input{tex/chapters/introduction}
+	\input{tex/chapters/chapter1}
+	\input{tex/backmatter/bibliography}	
+	\input{tex/backmatter/appendix}
 	
-	%	\backmatter
-	\input{tex/chapterpages/8 - Bibliography.tex}
+	\listoftodos % comment this out
 	
-	\input{tex/appendix.tex}
-	
-	%	\listoftodos
 \end{document}

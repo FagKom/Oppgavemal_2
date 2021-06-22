@@ -1,0 +1,6 @@
+\renewcommand{\bibsection}{} % hack for å erstatte kapitteloverskrift fra \bibliography - kommandoen
+\chapter*{Bibliography} % Stjerne fjerner tall fra kapittel, men også fra innholdsfortegnelse
+\markboth{BIBLIOGRAPHY}{} % Hack for å få tilbake headers som forsvinner med "*"
+\addcontentsline{toc}{chapter}{Bibliography} % Legger til Bibliography i innholdsfortegnelse
+
+\bibliography{bibliography_file}

@@ -1,60 +1,54 @@
 \ProvidesPackage{thesis}
 
-\usepackage[bindingoffset=6mm]{geometry} % compensate for binding in twopage.
+\usepackage{lipsum} % filltext - remove
 
-%\pdfmajorversion = 2 % pdf version 2.0
-\pdfminorversion = 7 % pdf version 1.7
-
-
-\RequirePackage[norsk,english]{babel}
-%\RequirePackage{thesis}
+\usepackage[bindingoffset=6mm]{geometry} % compensate for binding in twopage (for printing)
 \RequirePackage{ragged2e}
 
+\pdfminorversion = 7 % pdf version 1.7
+
+\RequirePackage[norsk,english]{babel}
 \RequirePackage[utf8]{inputenc}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Font encoding:
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern} % font
 %\RequirePackage{bookman} % font
 %\RequirePackage{euler}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{amsmath}
 \RequirePackage{amsfonts}
 \RequirePackage{amssymb}
 \RequirePackage{graphicx}
 \RequirePackage{physics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TIKZ
 \RequirePackage{tikz}
 \usetikzlibrary{calc}
 \usetikzlibrary{tikzmark}
 \usetikzlibrary{decorations.markings}
 \usetikzlibrary{backgrounds}
 \usetikzlibrary{fadings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \RequirePackage{multicol}
 \RequirePackage{mathtools}
 \RequirePackage{mhchem}
 \RequirePackage{caption}
 \captionsetup[figure]{labelfont=bf}
 \RequirePackage{subcaption}
-%%%%%%%%%
-% Toc things
+\RequirePackage{environ}
+%%%%%%%%%%%%%%%
+% Make table of contents nice
 \usepackage{etoolbox}
 \patchcmd{\tableofcontents}{\@starttoc}{\vspace{-2cm}\@starttoc}{}{}
 \RequirePackage[nottoc,numbib]{tocbibind}
 \RequirePackage{emptypage} % Extremely handy. https://tex.stackexchange.com/a/161468/191229
 \RequirePackage[titletoc]{appendix}
+\setcounter{tocdepth}{2}
 %%%%%%%%%%%%%%%%%%%
-\RequirePackage{environ}
-\makeatletter
-\newsavebox{\measure@tikzpicture}
-\NewEnviron{scaletikzpicturetowidth}[1]{%
-	\def\tikz@width{#1}%
-	\def\tikzscale{1}\begin{lrbox}{\measure@tikzpicture}%
-		\BODY
-	\end{lrbox}%
-	\pgfmathparse{#1/\wd\measure@tikzpicture}%
-	\edef\tikzscale{\pgfmathresult}%
-	\BODY
-}
-\makeatother
-
-
+% Some colors are nice
 \RequirePackage[colorlinks]{hyperref}
 \makeatletter
 \def\@footnotecolor{red}
@@ -83,10 +77,6 @@
 	linktocpage=true,
 	urlcolor=blue}
 
-\tikzset{->-/.style={decoration={
-			markings,
-			mark=at position #1 with {\arrow{>}}},postaction={decorate}}}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Fancy page layout
 \RequirePackage{fancyhdr}
@@ -96,7 +86,8 @@
 \fancyhead[RE]{\leftmark}
 \fancyhead[LO]{\rightmark}
 \renewcommand{\headrulewidth}{0pt}
-\RequirePackage[Lenny]{fncychap}
+\RequirePackage[Glenn]{fncychap}
+% Sonny, Lenny, Glenn, Conny, Rejne, Bjarne, and Bjornstrup are all viable options to fncychap. Choose the one you find the best! :)
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Epigraph tool %%%%%%
 % Source: https://tex.stackexchange.com/a/65914/191229
@@ -119,41 +110,6 @@
 %%%%%%%%
 % Other tools
 \RequirePackage{bm} % bold symbold
-\RequirePackage[disable]{todonotes} % add option [disable] to skip todo-notes.
-
-
-
-
-\newcommand{\sumn}[2]{\sum_{\langle #1, #2\rangle}} % sum nearest neighbor
-\newcommand{\sumne}[3]{\sum_{\langle #1, #2\rangle, #3}} % sum nearest neighbor
-\newcommand{\sumnn}[2]{\sum_{\langle\hspace{-0.4ex}\langle #1, #2\rangle\hspace{-0.4ex}\rangle}} %sum next nearest
-% Hamiltonians
-\newcommand{\nnn}[1]{\langle\hspace{-0.4ex}\langle #1\rangle\hspace{-0.4ex}\rangle}
-\newcommand{\hph}{H_{\text{ph}}}
-\newcommand{\hfph}{H_{\text{f-ph}}} 
-\newcommand{\hf}{H_{\text{f}}}
-\newcommand{\hma}{H_{\text{m}}}
-\newcommand{\cre}[1][]{c_{#1}^\dagger}
-\newcommand{\anh}[1][]{c_{#1}}
-\newcommand{\e}{\mathrm{e}}
-\newcommand{\vk}{\bm{k}}
-\newcommand{\vq}{\vb{q}}
-\newcommand{\bd}{\bm{\bar \delta}}
-\newcommand{\bde}{\bm{\delta}}
-\newcommand{\bdx}{\bar{\delta}_{x}}
-\newcommand{\bdy}{\bar{\delta}_{y}}
-\newcommand{\ep}{\varepsilon}
-\newcommand{\dg}{\dagger}
-\newcommand{\rsum}[1]{\overline{\sum_{#1}}}
-\newcommand{\vf}{\tilde{v}_F}
-\newcommand{\thq}{\theta_q}
-\newcommand{\normord}[1]{{}_{*}^{*}\mathrel{#1}{}_{*}^{*}}
-\newcommand{\vr}{\varrho}
-\newcommand{\vs}{\varsigma}
-\newcommand{\expdiffa}[2]{\left (\e^{#1}\e^{#2} - 1\right )}
-\newcommand{\expdiffb}[2]{\left (1- \e^{#1}\e^{#2}\right )}
-\DeclareMathOperator{\sgn}{sgn} % Signum operator, 
-
-\colorlet{mygreen}{green!50!black}
-\colorlet{myorange}{orange!80!black}
+\RequirePackage{todonotes} % add option [disable] to skip todo-notes.
+\newcommand{\suggestion}[1]{\todo[color=green!40]{#1}} % Custom todo-note
 
