@@ -1,0 +1,35 @@
+\documentclass[10pt,b5paper,twoside,openright]{report}
+\usepackage{thesis}
+
+\author{Firstname Lastname}
+\title{Thesis Title}
+
+
+
+\begin{document}
+	%	\frontmatter
+	%	\include{tex/titlepage.tex}
+	
+	\pagenumbering{roman}
+	\input{tex/pretext/abstract}
+	\input{tex/pretext/preface}
+	
+	\setcounter{tocdepth}{2}
+	{\hypersetup{linkcolor=cyan!70!black}\tableofcontents}
+	
+	%	\mainmatter
+	\input{tex/pretext/introduction}
+	\input{tex/Introduction_theory/2nd_quant/many_body_quantum_mechanics}
+	\input{tex/Introduction_theory/top_ins/topological_insulators}
+	\input{tex/Introduction_theory/graphene/graphene}
+	\input{tex/Introduction_theory/LLs/bosonization}
+	\input{tex/greens_calulations/phonon_corrections}
+	\input{tex/summary.tex}
+	
+	%	\backmatter
+	\input{tex/chapterpages/8 - Bibliography.tex}
+	
+	\input{tex/appendix.tex}
+	
+	%	\listoftodos
+\end{document}
